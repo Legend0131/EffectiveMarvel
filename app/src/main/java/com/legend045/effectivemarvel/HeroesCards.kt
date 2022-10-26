@@ -1,7 +1,10 @@
 package com.legend045.effectivemarvel
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -13,11 +16,14 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+@Preview
 @Composable
-fun HeroesCards(Hero: HeroesRowModel) {
+fun HeroesCards(@PreviewParameter(SampleUserProvider::class) hero : HeroesRowModel) {
     Box(
         contentAlignment = Alignment.BottomStart,
         modifier = Modifier
@@ -26,7 +32,7 @@ fun HeroesCards(Hero: HeroesRowModel) {
     ){
 
         Image(
-            painter = painterResource(id = Hero.imageId),
+            painter = painterResource(id = hero.imageId),
             contentDescription = "Heroes image",
             contentScale = ContentScale.Crop,
             modifier = Modifier
@@ -34,7 +40,7 @@ fun HeroesCards(Hero: HeroesRowModel) {
         )
 
         Text(
-            text = Hero.heroesName,
+            text = hero.heroesName,
             fontSize = 25.sp,
             letterSpacing= 0.005.sp,
             fontWeight= FontWeight.Bold,
