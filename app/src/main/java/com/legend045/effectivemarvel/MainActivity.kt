@@ -1,3 +1,5 @@
+@file:Suppress("OPT_IN_IS_NOT_ENABLED")
+
 package com.legend045.effectivemarvel
 
 import android.os.Bundle
@@ -11,8 +13,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -23,6 +27,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import dev.chrisbanes.snapper.ExperimentalSnapperApi
+import dev.chrisbanes.snapper.rememberSnapperFlingBehavior
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -78,11 +84,17 @@ fun Inscription(){ // Надпись "Choose your hero"
     )
 }
 
+@OptIn(ExperimentalSnapperApi::class)
 @Composable
 fun ScrollBar(){ // Скролл бар с героями
+
+    val lazyListState: LazyListState = rememberLazyListState()
+
     LazyRow(
         modifier = Modifier
-            .fillMaxWidth()
+            .fillMaxWidth(),
+        state = lazyListState,
+        flingBehavior = rememberSnapperFlingBehavior(lazyListState),
     ){
         itemsIndexed(
 
