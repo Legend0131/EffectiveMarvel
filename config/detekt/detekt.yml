@@ -379,8 +379,8 @@ naming:
     active: false
     rootPackage: ''
   MatchingDeclarationName:
-    active: true
-    mustBeFirst: true
+    active: false
+    mustBeFirst: false
   MemberNameEqualsClassName:
     active: true
     ignoreOverridden: true
