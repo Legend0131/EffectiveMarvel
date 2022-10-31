@@ -27,9 +27,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
 import dev.chrisbanes.snapper.ExperimentalSnapperApi
 import dev.chrisbanes.snapper.rememberSnapperFlingBehavior
 
@@ -49,7 +46,7 @@ class MainActivity : ComponentActivity() {
 
 
 @Composable
-fun Logo() { // Логотип Marvel
+fun LogoMarvel() {
     Image(
         painter = painterResource(id = R.drawable.marvel),
         contentDescription = "Logo Marvel",
@@ -60,7 +57,7 @@ fun Logo() { // Логотип Marvel
 
 @Preview
 @Composable
-fun Inscription() { // Надпись "Choose your hero"
+fun Inscription() {
     Text(
         text = "Choose your hero",
         fontSize = 30.sp,
@@ -131,21 +128,3 @@ fun ScrollBar(
         }
     }
 }
-
-@Composable
-fun PageNavHost(heroesState: MutableState<HeroesRowModel>) {
-    val navController = rememberNavController()
-    NavHost(
-        navController = navController,
-        startDestination = "main_page"
-    ) {
-        composable("main_page") {
-            MainPage(navController, heroesState)
-        }
-        composable("heroes_page") {
-            HeroesPage(navController, heroesState)
-        }
-    }
-}
-
-

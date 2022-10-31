@@ -32,29 +32,18 @@ fun HeroesCards(
         contentAlignment = Alignment.BottomStart,
         modifier = Modifier
             .padding(12.dp)
-            .size(width = 385.dp, height = 420.dp),
+            .size(width = 385.dp, height = 440.dp),
     ) {
 
         AsyncImage(
             modifier= Modifier.fillMaxWidth()
-                .clip(RoundedCornerShape(16.dp))
-                .clickable { navController.navigate("heroes_page")},
+                .clip(RoundedCornerShape(30.dp))
+                .clickable { navController.navigate(NavRoute.HeroesPage.route)},
             placeholder = painterResource(hero.imageId),
             model = hero.heroesLink,
-            contentDescription = hero.heroesInfo,
+            contentDescription = hero.heroesName,
 
             )
-
-        /*Image(
-            painter = painterResource(id = hero.imageId),
-            contentDescription = "Heroes image",
-            contentScale = ContentScale.Crop,
-            modifier = Modifier
-                .clip(RoundedCornerShape(20.dp))
-                .clickable {
-                    navController.navigate("heroes_page")
-                }
-        )*/
 
         Text(
             text = hero.heroesName,

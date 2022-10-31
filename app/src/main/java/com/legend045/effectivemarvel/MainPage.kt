@@ -20,9 +20,6 @@ fun MainPage(navController: NavHostController, heroesState: MutableState<HeroesR
         mutableStateOf(Color.Black)
     }
 
-
-    //val infoScreens = listOf("Iron Man", "Captain America", "Doctor Strange", "Spider Man", "Thor", "Thanos")
-
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -43,7 +40,7 @@ fun MainPage(navController: NavHostController, heroesState: MutableState<HeroesR
                 .fillMaxSize(),
         ) {
 
-            Logo()
+            LogoMarvel()
             Inscription()
             ScrollBar(color, navController, heroesState)
 
