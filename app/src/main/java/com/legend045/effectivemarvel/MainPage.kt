@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -13,9 +12,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavHostController
+import com.legend045.effectivemarvel.network.marvel.data.HeroesData
 
 @Composable
-fun MainPage(navController: NavHostController, heroesState: MutableState<HeroesRowModel>) {
+fun MainPage(
+    navController: NavHostController,
+    heroes: HeroesData?,
+) {
     val color = remember {
         mutableStateOf(Color.Black)
     }
@@ -42,7 +45,7 @@ fun MainPage(navController: NavHostController, heroesState: MutableState<HeroesR
 
             LogoMarvel()
             Inscription()
-            ScrollBar(color, navController, heroesState)
+            ScrollBar(navController, heroes)
 
         }
     }
